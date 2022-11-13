@@ -1,17 +1,17 @@
 package generator;
 
-import dto.LoginUserRequest;
+import dto.UserLoginRequest;
 import dto.UserRequest;
 
 public class LoginUserRequestGenerator {
 
-    public static LoginUserRequest from (UserRequest userRequest) {
+    public static UserLoginRequest from (UserRequest userRequest) {
 
-        LoginUserRequest loginUserRequest = new LoginUserRequest();
-        loginUserRequest.setEmail(userRequest.getEmail());
-        loginUserRequest.setPassword(userRequest.getPassword());
+        UserLoginRequest userLoginRequest = new UserLoginRequest();
+        userLoginRequest.setEmail(userRequest.getEmail());
+        userLoginRequest.setPassword(userRequest.getPassword());
 
-        return loginUserRequest;
+        return userLoginRequest;
 
     }
 }

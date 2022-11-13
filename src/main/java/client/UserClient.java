@@ -1,9 +1,6 @@
 package client;
 
-import dto.LoginUserRequest;
-import dto.LogoutUserRequest;
-import dto.UpdateUserRequest;
-import dto.UserRequest;
+import dto.*;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
@@ -22,41 +19,41 @@ public class UserClient extends RestClient {
     }
 
     // login user
-    public ValidatableResponse loginUser(LoginUserRequest loginUserRequest) {
+    public ValidatableResponse loginUser(UserLoginRequest userLoginRequest) {
 
         return given()
                 .spec(getDefaultRequestSpec())
-                .body(loginUserRequest)
+                .body(userLoginRequest)
                 .post(getAPIUserLogin())
                 .then();
     }
 
-    public ValidatableResponse logoutUser(LogoutUserRequest logoutUserRequest) {
+    public ValidatableResponse logoutUser(UserLogoutRequest userLogoutRequest) {
 
         return given()
                 .spec(getDefaultRequestSpec())
-                .body(logoutUserRequest)
-                .post(getApiUserLogout())
+                .body(userLogoutRequest)
+                .post(getAPIUserLogout())
                 .then();
     }
 
     // update user
-    public ValidatableResponse updateUser(UpdateUserRequest updateUserRequest, String accessToken) {
+    public ValidatableResponse updateUser(UserUpdateRequest userUpdateRequest, String accessToken) {
 
         return given()
                 .spec(getDefaultRequestSpec())
-                .header("authorization", accessToken)
-                .body(updateUserRequest)
+                .header("authorization", accessToken != null ? accessToken : "")
+                .body(userUpdateRequest)
                 .patch(getAPIUserUpdate())
                 .then();
     }
 
     // delete user
-    public ValidatableResponse deleteUser(LoginUserRequest loginUserRequest) {
+    public ValidatableResponse deleteUser(UserDeleteRequest userDeleteRequest) {
 
         return given()
                 .spec(getDefaultRequestSpec())
-                .body(loginUserRequest)
+                .header("authorization", userDeleteRequest.getAuthorization())
                 .delete(getAPIUserUpdate())
                 .then();
     }

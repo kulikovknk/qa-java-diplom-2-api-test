@@ -1,6 +1,6 @@
 package dto;
 
-public class LogoutUserRequest {
+public class UserLogoutRequest {
 
     private String token;
 

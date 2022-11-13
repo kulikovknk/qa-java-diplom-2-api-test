@@ -1,16 +1,15 @@
 package generator;
 
-import dto.LoginUserRequest;
-import dto.LogoutUserRequest;
+import dto.UserLoginRequest;
+import dto.UserLogoutRequest;
 
 public class LogoutUserRequestGenerator {
 
-    public static LogoutUserRequest from (LoginUserRequest loginUserRequest) {
+    public static UserLogoutRequest from (UserLoginRequest userLoginRequest) {
 
-        LogoutUserRequest logoutUserRequest = new LogoutUserRequest();
-//        logoutUserRequest.setToken(String.format("{{%s}}", loginUserRequest.getRefreshToken()));
-        logoutUserRequest.setToken(loginUserRequest.getRefreshToken());
+        UserLogoutRequest userLogoutRequest = new UserLogoutRequest();
+        userLogoutRequest.setToken(userLoginRequest.getRefreshToken());
 
-        return logoutUserRequest;
+        return userLogoutRequest;
     }
 }

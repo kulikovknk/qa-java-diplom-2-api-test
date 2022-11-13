@@ -8,19 +8,28 @@ import static config.Config.*;
 
 public class OrderClient extends RestClient {
 
-    // create order
-    public ValidatableResponse createOrder(OrderRequest orderRequest) {
+    public ValidatableResponse getIngredients() {
         return given()
                 .spec(getDefaultRequestSpec())
-                .body(orderRequest)
-                .post()
+                .get(getAPIGetIngredients())
                 .then();
     }
 
-     public ValidatableResponse getOrderList() {
+    // create order
+    public ValidatableResponse createOrder(OrderRequest orderRequest, String accessToken) {
         return given()
                 .spec(getDefaultRequestSpec())
-                .get()
+                .header("authorization", accessToken != null ? accessToken : "")
+                .body(orderRequest)
+                .post(getAPIOrderCreate())
+                .then();
+    }
+
+     public ValidatableResponse getOrderList(String accessToken) {
+        return given()
+                .spec(getDefaultRequestSpec())
+                .header("authorization", accessToken != null ? accessToken : "")
+                .get(getApiOrderList())
                 .then();
     }
 

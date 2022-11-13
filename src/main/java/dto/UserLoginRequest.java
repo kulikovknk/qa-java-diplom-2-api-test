@@ -1,10 +1,11 @@
 package dto;
 
-public class LoginUserRequest {
+public class UserLoginRequest {
 
     private String email;
     private String password;
     private String refreshToken;
+    private String authorization;
 
     public String getEmail() {
         return email;
@@ -28,5 +29,13 @@ public class LoginUserRequest {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+
+    public String getAuthorization() {
+        return authorization;
+    }
+
+    public void setAuthorization(String authorization) {
+        this.authorization = authorization;
     }
 }

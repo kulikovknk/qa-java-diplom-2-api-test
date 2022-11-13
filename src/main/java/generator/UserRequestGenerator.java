@@ -10,9 +10,10 @@ public class UserRequestGenerator {
         String userName = RandomStringUtils.randomAlphabetic(7);
 
         UserRequest userRequest = new UserRequest();
+
         userRequest.setName(userName);
         userRequest.setPassword(RandomStringUtils.randomAlphabetic(10));
-        userRequest.setEmail(String.format("%s@mail.ru", userName));
+        userRequest.setEmail(String.format("%s@mail.ru", userName.toLowerCase()));
 
         return userRequest;
 

@@ -1,6 +1,6 @@
 package dto;
 
-public class UpdateUserRequest {
+public class UserUpdateRequest {
 
     private String name;
     private String password;
